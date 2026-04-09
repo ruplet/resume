@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{polski}
+
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.15}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+\newcommand{\cvlink}[2]{\href{#1}{\nolinkurl{#2}}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1}% \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\ 
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}% \hspace{2em}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+  \name{Pawel Balawender}
+  \contact{\href{mailto:ruplet@ruplet.com}{ruplet@ruplet.com} \hspace{1cm} \cvlink{https://ruplet.com}{ruplet.com} \hspace{1cm} \cvlink{https://linkedin.com/in/balawender}{linkedin.com/in/balawender} \hspace{1cm} \cvlink{https://github.com/ruplet}{github.com/ruplet}}
+\end{resume_header}
+
+\begin{resume_section}{Education}
+  \begin{resume_subsection}[October 2023 -- December 2025]{University of Warsaw (MSc: 5.0 / 5.0)}
+    \begin{subitems}
+    \item Thesis: exploring a new way to formalize Computational Complexity in Lean 4.
+    \item Presented one Lean 4 design at AITP'25 in France: \cvlink{https://ruplet.com/aitp-presentation.pdf}{ruplet.com/aitp-presentation.pdf}.
+    \item One-month academic visit to INRIA Paris with Yannick Forster.
+    \item Top 5 master's students for a special research program (funding + course exemption).
+    \end{subitems}
+  \end{resume_subsection}
+  \begin{resume_subsection}[October 2020 -- July 2023]{University of Warsaw (BSc: 4.5 / 5.0)}
+    \begin{subitems}
+    \item Thesis: effectiveness of automated counteracting hate speech on Twitter.
+    \item Worked in a team of 4 as part of an ERC-funded research group led by Prof. Piotr Sankowski.
+    \item Results presented at EMNLP 2024 in Miami (paper: \cvlink{https://arxiv.org/abs/2311.16905}{arxiv.org/abs/2311.16905}).
+    \item Top 8 bachelor's students for a special course of study during the sophomore year.
+    \end{subitems}
+  \end{resume_subsection}
+  
+  
+\end{resume_section}
+\begin{resume_section}{Work Experience}
+	\begin{resume_employer}{stealth (from 2026: Sentinel Eagle)}{Software Engineer}{Warsaw}{October 2025 -- May 2026}
+  \item Joined as the 7th employee at an AI defence startup in Poland.
+  \item Building drone navigation for GPS-denied zones for the war in Ukraine.
+  \item Scaling software provisioning from 1 to [exact count omitted] exported devices.
+	\item Owning low-level OS and hardware layers.
+	\end{resume_employer}
+  \begin{resume_employer}{Optiver}{Software Engineering Intern}{Amsterdam}{July 2024 -- August 2024}
+   \item Assigned to the low-latency team of Automated Trading Systems; C and C++ codebase.
+   \item Got a 30\% speedup in offline calculations previously taking as long as 6 hours.
+   \item Went through a two-week bootcamp in derivative pricing and market making theory.
+  \end{resume_employer}
+  \begin{resume_employer}{Goldman Sachs}{Summer Analyst}{Warsaw}{July 2022 -- September 2022}
+  \item Deploying a monitoring application in Python using Docker, Kubernetes, and Terraform.
+    \item Led the Community Teamwork volunteer group.
+  \end{resume_employer}
+\end{resume_section}
+
+\begin{resume_section}{Competitions and Personal Projects}
+  \begin{resume_subsection}[(February 2025 -- December 2025)]{Formalization of bounded arithmetic}
+    \begin{subitems}
+      \item Discovered that Lean 4 enables a new way to formalize time complexity of programs.
+      \item Scope too large for MSc. Initial work on the programming language presented at AITP'25.
+      \item Code: \cvlink{https://github.com/ruplet/formalization-of-bounded-arithmetic}{github.com/ruplet/formalization-of-bounded-arithmetic}.
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(July 2025)]{Paper implementation: Distributed Single Source Shortest Paths}
+    \begin{subitems}
+      \item Verified scalability on 48, 96, 192 and 384 CPUs on the Okeanos supercomputer in Poland.
+      \item Code and report: \cvlink{https://github.com/ruplet/distributed-sssp/tree/main}{github.com/ruplet/distributed-sssp/tree/main}
+    \end{subitems}
+  \end{resume_subsection}
+  \begin{resume_subsection}[(May 2025)]{Presentation at ML society meeting in Warsaw}
+    \begin{subitems}
+      \item Gave an introductory talk on using Lean 4 to verify LLM outputs in mathematics.
+      \item Slides: \cvlink{https://ruplet.com/presentation-core.pdf}{ruplet.com/presentation-core.pdf}.
+    \end{subitems}
+  \end{resume_subsection}
+
+  % \begin{resume_subsection}[(November 2022)]{Multilayer Perceptron with Backpropagation in Numpy}
+  %   \begin{subitems}
+  %     \item Implemented a neural network from scratch in Numpy for my Deep Neural Networks course.
+  %     \item The code contains extensive documentation, especially the backpropagation part.
+  %     \item For the details, please take a look at: \url{github.com/eerio/mlp-checkpointing}
+  %   \end{subitems}
+  % \end{resume_subsection}
+
+  \begin{resume_subsection}[(July 2020)]{Award from the Polish Ministry of Education}
+    \begin{subitems}
+      \item Received a Ministry award for the most accomplished high school students of the year.
+    \end{subitems}
+  \end{resume_subsection}
+
+  % \begin{resume_subsection}[(October 2019 -- June 2020)]{European Union Contest for Young Scientists}
+  %   \begin{subitems}
+  %     \item In a team of 2, designed mid-flight charging of UAV batteries.
+  %     \item Developed bare-metal drivers in C and Assembly for an STM32 microcontroller.
+  %   \end{subitems}
+  % \end{resume_subsection}
+
+  \begin{resume_subsection}[(September 2019 -- June 2020)]{Dulwich College London}
+    \begin{subitems}
+      \item Selected for funding + accommodation to study A-levels at Dulwich College London.
+      \item Result of support from the Polish Children's Fund throughout high school (2017-2020).
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(November 2018 -- March 2019)]{Operating System for the Cortex-M0 microprocessor}
+    \begin{subitems}
+      \item Got 1st place in Poland in MeetIT Foundation's competition.
+      \item Designed a minimal operating system with threading and a file system.
+    \end{subitems}
+  \end{resume_subsection}
+
+\end{resume_section}
+
+% \begin{resume_section}{Skills}
+%   \begin{nospacetabbing}
+
+%     \textbf{Main Skills}  \= C, C++, Python, Linux, Data analysis \\*
+%     \textbf{Side Skills} \> Java, Haskell, SQL, PyTorch\\*
+%   \textbf{Languages} \> Native in Polish; C1 in English (supported by IELTS band 8)\\*
+%   \end{nospacetabbing}
+% \end{resume_section}
+\end{document}
